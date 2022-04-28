@@ -22,3 +22,8 @@ res = app.AsyncResult(add_result2_id)
 res.get()
 print(res.state)
 print(res.successful())
+
+
+# use signature
+func_sync_to_signature = add.signature(args=[18, 2], countdown=10)
+func_sync_to_signature.delay()
