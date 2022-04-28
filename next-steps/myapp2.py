@@ -10,8 +10,12 @@ res = app.AsyncResult(add_result_id)
 print(res.state)
 
 
-add_result2 = add.apply_async(args=[4, 2], queue='celery') # default queue is celery and it's create by celery, worker lissten to this queue
-                                                            # for define new queue we should define and create new queue on celery run syntax   
+'''
+default queue is celery and it's create by celery, worker lissten to this queue,
+for define new queue we should define and create new queue on celery run syntax.
+* now it's don't have effect on our test (default is celery)
+'''
+add_result2 = add.apply_async(args=[4, 2], queue='celery')
 add_result2_id = add_result2.id
 
 res = app.AsyncResult(add_result2_id)
