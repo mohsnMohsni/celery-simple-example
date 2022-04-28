@@ -25,4 +25,3 @@ add_result1.get()
 
 divide_result1 = add.apply_async(args=[999, 3], countdown=5)
 divide_result1.get()
-
