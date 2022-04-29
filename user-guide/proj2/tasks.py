@@ -1,6 +1,8 @@
 import time
 from functools import wraps
 
+from celery import shared_task
+
 from proj2.celery import app
 
 
@@ -29,7 +31,11 @@ def say_hello_world():
     return 'Hello world.'
 
 
-@app.task
+@shared_task
 def run_in_async_mode():
+    '''
+    `shared_task` decorator is a task share with all app, but app.task is a decorator that
+    create task just can use with specefic task.
+    '''
     time.sleep(5)
     return 'Done.'
