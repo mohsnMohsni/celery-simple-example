@@ -31,6 +31,14 @@ def say_hello_world():
     return 'Hello world.'
 
 
+@app.task(bind=True)
+def say_welcome(self):
+    '''
+    bind=True pass `self` argument to function, it includes task information.
+    '''
+    return 'Welcome.'
+
+
 @shared_task
 def run_in_async_mode():
     '''
