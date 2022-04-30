@@ -47,3 +47,21 @@ def run_in_async_mode():
     '''
     time.sleep(5)
     return 'Done.'
+
+
+class SayHelloWorldClassTask(app.Task):
+
+    def __init__(self):
+        '''
+        `__init__` run in inital task when it's define in celery,
+        not in instancetion on every request.
+        '''
+        self.message = 'Hello world.'
+
+    def run(self, *args, **kwargs):
+        return self.message
+
+# say_hello_world_class_task = app.tasks(SayHelloWorldClassTask.name)
+
+say_hello_world_class_task = SayHelloWorldClassTask()
+app.register_task(say_hello_world_class_task)
